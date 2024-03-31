@@ -1,8 +1,11 @@
 package ru.vacpay.vacationpaycalculator.controller;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import ru.vacpay.vacationpaycalculator.service.VacationPayService;
+import java.time.LocalDate;
+
 
 @Controller
 @ResponseBody
@@ -15,7 +18,9 @@ public class VacationPayController {
     }
 
     @GetMapping
-    public Double amountOfVacationPay(@RequestParam Double avgSalary, @RequestParam Integer vacationDays){
-        return vacationPayService.amountOfVacationPay(avgSalary, vacationDays);
+    public Double amountOfVacationPay(@RequestParam Double avgSalary,
+                                      @RequestParam @DateTimeFormat(pattern = "yyyy-mm-dd") LocalDate startVacation,
+                                      @RequestParam @DateTimeFormat(pattern = "yyyy-mm-dd") LocalDate endVacation){
+        return vacationPayService.amountOfVacationPay(avgSalary, startVacation, endVacation);
     }
 }

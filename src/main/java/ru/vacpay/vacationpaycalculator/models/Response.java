@@ -1,4 +1,4 @@
-package ru.vacpay.vacationpaycalculator.dto;
+package ru.vacpay.vacationpaycalculator.models;
 
 public class Response {
     private String  message;
